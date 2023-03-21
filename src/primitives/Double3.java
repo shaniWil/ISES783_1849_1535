@@ -1,6 +1,3 @@
-/**
- *
- */
 package primitives;
 
 import static primitives.Util.isZero;
@@ -73,8 +70,7 @@ public class Double3 {
     }
 
     /** Scale (multiply) floating point triad by a number into a new triad where
-     * each
-     * number is multiplied by the number
+     * each number is multiplied by the number
      * @param  rhs right handle side operand for scaling
      * @return     result of scale */
     public Double3 scale(double rhs) {
