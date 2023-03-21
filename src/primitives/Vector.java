@@ -1,7 +1,7 @@
 package primitives;
 
-/**Vector class represents vector in 3D Cartesian coordinate system
- */
+/** Vector class represents vector in 3D Cartesian coordinate system
+    @author Raaya Feldmar & Shani Wilamowsky */
 public class Vector extends Point {
     /**Constructor to initialize Vector based object with three number values of its point
      *@param x first number value of the point

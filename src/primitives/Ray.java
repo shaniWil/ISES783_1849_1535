@@ -2,9 +2,8 @@ package primitives;
 
 import java.util.Objects;
 
-/**
- * Ray class represents ray in 3D Cartesian coordinate system
- */
+/** Ray class represents ray in 3D Cartesian coordinate system
+ *  @author Raaya Feldmar & Shani Wilamowsky */
 public class Ray {
     private final Point p0;
     private final Vector dir;
