@@ -4,7 +4,7 @@ import primitives.Point;
 import primitives.Vector;
 
 public class Sphere extends RadialGeometry implements Geometry {
-    Point center;
+    private final Point center;
 
     public Sphere(double radius, Point center) {
         super(radius);

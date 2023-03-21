@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1668f80d-d29d-43f8-82d9-a816d4680a2d" name="Changes" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/geometries/Geometry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/geometries/Polygon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/primitives/Util.java" afterDir="false" />
+    <list default="true" id="1668f80d-d29d-43f8-82d9-a816d4680a2d" name="Changes" comment="Stage1 Final">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Double3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Double3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/primitives/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Vector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +69,7 @@
       <workItem from="1677401281488" duration="3865000" />
       <workItem from="1678625212565" duration="1193000" />
       <workItem from="1679243755357" duration="2792000" />
-      <workItem from="1679388693297" duration="6926000" />
+      <workItem from="1679388693297" duration="8312000" />
     </task>
     <task id="LOCAL‎-00001" summary="first commit">
       <created>1677404490895</created>
@@ -85,7 +78,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1677404490895</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL‎-00002" summary="Stage1 Final">
+      <created>1679395803105</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL‎-00002" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1679395803105</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -93,6 +93,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="Stage1 Final" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stage1 Final" />
   </component>
 </project>

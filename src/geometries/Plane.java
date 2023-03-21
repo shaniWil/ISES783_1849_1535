@@ -4,8 +4,8 @@ import primitives.Point;
 import primitives.Vector;
 
 public class Plane implements Geometry {
-    private Point q0;
-    private Vector normal;
+    private final Point q0;
+    private final Vector normal;
 
     public Plane(Point firstPoint ,Point secondPoint,Point thirdPoint) {
        q0 = firstPoint;
@@ -18,7 +18,7 @@ public class Plane implements Geometry {
     }
 
     public Vector getNormal() {
-        return null;
+        return normal;
     }
 
     @Override

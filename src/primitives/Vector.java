@@ -46,17 +46,17 @@ public class Vector extends Point {
     }
 
     @Override
-    public boolean equals(Object o) {
-        return super.equals(o);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj instanceof Vector other)
+            return super.equals(other);
+        return false;
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
+    public int hashCode() { return xyz.hashCode(); }
 
     @Override
-    public String toString() {
-        return "Vector{}";
-    }
+    public String toString() { return "‐>" + super.toString(); }
+
 }
