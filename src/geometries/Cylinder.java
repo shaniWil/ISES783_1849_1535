@@ -27,6 +27,15 @@ public class Cylinder  extends Tube implements Geometry {
 
     @Override
     public Vector getNormal(Point point) {
+        Point p0=axisRay.getP0();
+        Vector v=axisRay.getDir();
+        if ((point.equals(p0.add(v.scale(height)))) || (point.subtract(p0.add(v.scale(height))).dotProduct(v)==0))
+            return v;
+
+        if ((point.equals(p0))||(point.subtract(p0).dotProduct(v)==0))
+            return v.scale(-1);
+
         return super.getNormal(point);
+
     }
 }

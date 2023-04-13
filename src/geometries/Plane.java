@@ -15,7 +15,9 @@ public class Plane implements Geometry {
      * @param thirdPoint the coordinates of the third point */
     public Plane(Point firstPoint ,Point secondPoint,Point thirdPoint) {
        this.q0 = firstPoint;
-       this.normal = null;
+       Vector v1= secondPoint.subtract(firstPoint);//(-1,1,0)
+       Vector v2 = thirdPoint.subtract(firstPoint);//(-1,0,0)
+       this.normal = v1.crossProduct(v2).normalize();
     }
 
     /** Constructor to initialize Plane based object with a point in space and a normal to the plane
@@ -34,7 +36,7 @@ public class Plane implements Geometry {
 
     @Override
     public Vector getNormal(Point point) {
-        return null;
+        return normal;
     }
 
 
