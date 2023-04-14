@@ -6,6 +6,10 @@ import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit tests for geometries.Sphere class
+ * @author raaya feldmar
+ */
 class SphereTest {
 
     Sphere s1= new Sphere(1,new Point(0,0,0));
