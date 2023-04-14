@@ -54,21 +54,17 @@ class VectorTest {
         // ============ Equivalence Partitions Tests ==============
         double d1=v1.dotProduct(v2);
         double d2=v1.dotProduct(v3);
-        // TC01: Test that length of dot-product is proper (orthogonal vectors taken
-        // for simplicity)
+        // TC01: Test that length of dot-product is proper
         assertEquals(-28d,d2 ,0.00001,"dotProduct() wrong result length");
 
         // =============== Boundary Values Tests ==================
-        //
+        //TC10: Test that length of dot-product of orthogonal vectors is 0.
         assertEquals(0d,d1 ,0.00001,"dotProduct() wrong result length");
 
-        // TC10: Test cross-product result orthogonality to its operands
-        assertTrue(!isZero(v1.dotProduct(new Vector(1,3,-2))),"dotProduct() result is not orthogonal to 1st operand");
-        assertTrue(!isZero(v1.dotProduct(new Vector(0,2,-2))),"dotProduct() result is not orthogonal to 2nd operand");
-        assertTrue(!isZero(v1.dotProduct(new Vector(0,3,0))),"dotProduct() result is not orthogonal to 3rd operand");
-
-
-
+        // TC10: Test dot-product result orthogonality to its operands
+        assertFalse(isZero(v1.dotProduct(new Vector(1, 3, -2))), "dotProduct() result is not orthogonal to 1st operand");
+        assertFalse(isZero(v1.dotProduct(new Vector(0, 2, -2))), "dotProduct() result is not orthogonal to 2nd operand");
+        assertFalse(isZero(v1.dotProduct(new Vector(0, 3, 0))), "dotProduct() result is not orthogonal to 3rd operand");
     }
 
     @Test
@@ -104,6 +100,8 @@ class VectorTest {
 
     @Test
     public void testNormalize() {
+        // ============ Equivalence Partitions Tests ==============
+        //TC01: Test that the length after normalize is 1.
         assertEquals(1d,v1.normalize().length(),0.00001d,"ERROR: normalize() the Vector length should be equal to 1");
     }
 }
