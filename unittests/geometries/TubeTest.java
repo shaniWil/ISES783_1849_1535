@@ -7,6 +7,10 @@ import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit tests for geometries.Tube class
+ * @author raaya feldmar
+ */
 class TubeTest {
 
     Tube t1 = new Tube(1,new Ray(new Point(0,0,0),new Vector(1,0,0)));

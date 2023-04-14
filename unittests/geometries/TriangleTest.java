@@ -6,6 +6,10 @@ import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit tests for geometries.Triangle class
+ * @author raaya feldmar
+ */
 class TriangleTest {
     Point po1=new Point(1,0,0);
     Point po2=new Point(0,1,0);

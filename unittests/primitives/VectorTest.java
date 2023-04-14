@@ -8,7 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static primitives.Util.isZero;
 
 /**
- * Test method for {@link primitives.Vector#crossProduct(primitives.Vector)}.
+ * Unit tests for primitives.Vector class
+ * @author raaya feldmar
  */
 
 

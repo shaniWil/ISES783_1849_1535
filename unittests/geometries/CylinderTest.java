@@ -7,6 +7,10 @@ import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit tests for geometries.Cylinder class
+ * @author raaya feldmar
+ */
 class CylinderTest {
 
     Cylinder c1= new Cylinder(1d,new Ray(new Point(0,0,0),new Vector(1,0,0)), 5d);
@@ -24,15 +28,15 @@ class CylinderTest {
         assertEquals(1d,c1.getNormal(p1).length(),0.00001d,"ERROR: getNormal() the normal is not normalized");
         //TC02: Test that the normal is orthogonal to the Cylinder
         assertEquals(v1,c1.getNormal(p1),"ERROR: getNormal() the normal does not orthogonal to the Cylinder");
-        //TC03:
+        //TC03: Test the normal for point on the top
         assertEquals(v2,c1.getNormal(p2),"ERROR: getNormal() the normal does not orthogonal to the Cylinder");
-        //TC04:
+        //TC04: Test the normal for point on the bottom
         assertEquals(v2.scale(-1),c1.getNormal(p3),"ERROR: getNormal() the normal does not orthogonal to the Cylinder");
+
         // =============== Boundary Values Tests ==================
         // TC10: Test the normal of the bottom base center
         assertEquals(v2.scale(-1),c1.getNormal(p4),"ERROR: getNormal() the normal does not orthogonal to the Cylinder's bottom base center");
-        //TC04:Test the normal of the top base center
+        //TC04: Test the normal of the top base center
         assertEquals(v2,c1.getNormal(p5),"ERROR: getNormal() the normal does not orthogonal to the Cylinder's top base center");
-
     }
 }

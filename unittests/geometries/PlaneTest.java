@@ -7,6 +7,10 @@ import primitives.Vector;
 import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit tests for geometries.Plane class
+ * @author raaya feldmar
+ */
 class PlaneTest {
     Point po1=new Point(1,0,0);
     Point po2=new Point(0,1,0);
