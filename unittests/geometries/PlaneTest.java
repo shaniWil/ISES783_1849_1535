@@ -18,8 +18,13 @@ class PlaneTest {
 
     @Test
     public void testConstructor() {
+        // ============ Equivalence Partitions Tests ==============
+        // TC01: Test that the constructor proper
         assertEquals(pl2,pl1,"ERROR: constructor() the plane is incorrect");
-        assertThrows(IllegalArgumentException.class, ()->new Plane(po1,po2,new Point(1,0,0)),"ERROR: constructor() all 3 point on the same ray");
+        // =============== Boundary Values Tests ==================
+        //TC10: Test that throws exception if the first point equals to the third point.
+        assertThrows(IllegalArgumentException.class, ()->new Plane(po1,po2,new Point(1,0,0)),"ERROR: constructor() the first point equals to the third point");
+        //TC10: Test that throws exception if all point on the same ray
         assertThrows(IllegalArgumentException.class, ()->new Plane(po1,po2,new Point(-1,2,0)),"ERROR: constructor() all 3 point on the same ray");
 
     }
