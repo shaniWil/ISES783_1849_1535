@@ -7,11 +7,11 @@ import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Unit tests for geometries.Cylinder class
- * @author raaya feldmar
- */
+
+/** Unit tests for Cylinder class
+ * @author Raaya Feldmar & Shani Wilamowsky*/
 class CylinderTest {
+    /** Test method for {@link geometries.Cylinder}.*/
 
     Cylinder c1= new Cylinder(1d,new Ray(new Point(0,0,0),new Vector(1,0,0)), 5d);
     Vector v1=new Vector(0,1,0);
