@@ -3,6 +3,8 @@ package geometries;
 import primitives.Point;
 import primitives.Vector;
 
+import java.util.Objects;
+
 /** This class represents a plane, will serve the flat bodies
  * @author Raaya Feldmar & Shani Wilamowsky */
 public class Plane implements Geometry {
@@ -39,5 +41,21 @@ public class Plane implements Geometry {
         return normal;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        Plane plane = (Plane) o;
+
+        if (!Objects.equals(q0, plane.q0)) return false;
+        return Objects.equals(normal, plane.normal);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = q0 != null ? q0.hashCode() : 0;
+        result = 31 * result + (normal != null ? normal.hashCode() : 0);
+        return result;
+    }
 }
