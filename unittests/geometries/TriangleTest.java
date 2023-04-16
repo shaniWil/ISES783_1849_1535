@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for geometries.Triangle class
- * @author raaya feldmar
+ * @author Raaya Feldmar & Shani Wilamowsky
  */
 class TriangleTest {
     Point po1=new Point(1,0,0);

@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for geometries.Sphere class
+ * @author Raaya Feldmar & Shani Wilamowsky
  *
  * @author raaya feldmar
  */
