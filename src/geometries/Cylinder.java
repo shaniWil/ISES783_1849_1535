@@ -4,6 +4,8 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.List;
+
 /** This class represents a geometric body of cylinder type
  * @author Raaya Feldmar & Shani Wilamowsky */
 public class Cylinder  extends Tube implements Geometry {
@@ -37,5 +39,10 @@ public class Cylinder  extends Tube implements Geometry {
 
         return super.getNormal(point);
 
+    }
+
+    @Override
+    public List<Point> findIntsersections(Ray ray) {
+        return null;
     }
 }

@@ -4,6 +4,8 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.List;
+
 /** This class represents a radial geometric body of tube type and will serve all classes based on tube
  * @author Raaya Feldmar & Shani Wilamowsky */
 public class Tube extends RadialGeometry implements Geometry {
@@ -39,5 +41,10 @@ public class Tube extends RadialGeometry implements Geometry {
             return point.subtract(o).normalize();
         }
 
+    }
+
+    @Override
+    public List<Point> findIntsersections(Ray ray) {
+        return null;
     }
 }

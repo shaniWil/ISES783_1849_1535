@@ -27,6 +27,10 @@ public class Ray {
     {
         return p0;
     }
+
+    public Point getPoint(double t) {
+        return p0.add(dir.scale(t));
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

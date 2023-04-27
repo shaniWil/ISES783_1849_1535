@@ -63,4 +63,9 @@ class CylinderTest {
                 c1.getNormal(p5),
                 "ERROR: getNormal() the normal does not orthogonal to the Cylinder's top base center");
     }
+
+    @Test
+    void testFindIntsersections() {
+
+    }
 }

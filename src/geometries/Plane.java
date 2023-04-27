@@ -1,9 +1,14 @@
 package geometries;
 
 import primitives.Point;
+import primitives.Ray;
 import primitives.Vector;
 
+import java.util.List;
 import java.util.Objects;
+
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 
 /** This class represents a plane, will serve the flat bodies
  * @author Raaya Feldmar & Shani Wilamowsky */
@@ -16,10 +21,10 @@ public class Plane implements Geometry {
      * @param secondPoint the coordinates of the second point
      * @param thirdPoint the coordinates of the third point */
     public Plane(Point firstPoint ,Point secondPoint,Point thirdPoint) {
-       this.q0 = firstPoint;
-       Vector v1= secondPoint.subtract(firstPoint);//(-1,1,0)
-       Vector v2 = thirdPoint.subtract(firstPoint);//(-1,0,0)
-       this.normal = v1.crossProduct(v2).normalize();
+       q0 = firstPoint;
+       Vector v1= firstPoint.subtract(secondPoint);//(-1,1,0)
+       Vector v2 = firstPoint.subtract(thirdPoint);//(-1,0,0)
+       normal = v1.crossProduct(v2).normalize();
     }
 
     /** Constructor to initialize Plane based object with a point in space and a normal to the plane
@@ -57,5 +62,21 @@ public class Plane implements Geometry {
         int result = q0 != null ? q0.hashCode() : 0;
         result = 31 * result + (normal != null ? normal.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public List<Point> findIntsersections(Ray ray) {
+        Vector rayDirection = ray.getDir();
+        Point rayP0 = ray.getP0();
+
+        if(rayP0.equals(q0))
+            return null;
+        double nv = alignZero(normal.dotProduct(rayDirection));
+        if (isZero(nv))
+            return null;
+        double t = alignZero(alignZero(normal.dotProduct(q0.subtract(rayP0)) / nv));
+        if (t > 0)
+             return List.of(rayP0.add((rayDirection).scale(t)));
+        return null;
     }
 }

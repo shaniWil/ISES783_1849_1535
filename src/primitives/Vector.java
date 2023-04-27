@@ -45,7 +45,9 @@ public class Vector extends Point {
      * @return result scalar
      */
     public double dotProduct(Vector vector) {
-        return this.xyz.d1 * vector.xyz.d1 + this.xyz.d2 * vector.xyz.d2 + this.xyz.d3 * vector.xyz.d3;
+        return xyz.d1 * vector.xyz.d1 +
+                xyz.d2 * vector.xyz.d2 +
+                xyz.d3 * vector.xyz.d3;
     }
 
     /**
@@ -54,9 +56,9 @@ public class Vector extends Point {
      * @return result vector
      */
     public Vector crossProduct(Vector vector) {
-        return new Vector(this.xyz.d2 * vector.xyz.d3-this.xyz.d3 * vector.xyz.d2,
-                this.xyz.d3 * vector.xyz.d1-this.xyz.d1 * vector.xyz.d3,
-                this.xyz.d1 * vector.xyz.d2-this.xyz.d2 * vector.xyz.d1);
+        return new Vector(xyz.d2 * vector.xyz.d3 - xyz.d3 * vector.xyz.d2,
+                xyz.d3 * vector.xyz.d1 - xyz.d1 * vector.xyz.d3,
+                xyz.d1 * vector.xyz.d2-xyz.d2 * vector.xyz.d1);
     }
 
     /**
@@ -64,7 +66,7 @@ public class Vector extends Point {
      * @return squared length
      */
     public double lengthSquared() {
-        return this.xyz.d1 * this.xyz.d1 + this.xyz.d2 * this.xyz.d2 + this.xyz.d3 * this.xyz.d3;
+        return xyz.d1 * xyz.d1 + xyz.d2 * xyz.d2 + xyz.d3 * xyz.d3;
     }
 
     /**
@@ -72,7 +74,7 @@ public class Vector extends Point {
      * @return length
      */
     public double length() {
-        return Math.sqrt(this.dotProduct(this));
+        return Math.sqrt(lengthSquared());
     }
 
     /**
@@ -80,7 +82,13 @@ public class Vector extends Point {
      * @return the unit vector
      */
     public Vector normalize() {
-       return this.scale(1/this.length());
+
+        double len = length();
+        return new Vector (
+                xyz.d1/len,
+                xyz.d2/len,
+                xyz.d3/len
+        );
     }
 
     @Override
