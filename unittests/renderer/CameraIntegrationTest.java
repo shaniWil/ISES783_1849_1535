@@ -44,7 +44,7 @@ class CameraIntegrationTest {
                 generalIntegration(sphere2,camera2, 3,3),
                 "ERROR: sphereTest() wrong amount of integrations");
         //TC03:test intersection with sphere that contain partly of the view plane
-        Sphere sphere3 = new Sphere(4,new Point(0,0,-2));
+        Sphere sphere3 = new Sphere(2,new Point(0,0,-2));
         assertEquals(10,
                 generalIntegration(sphere3,camera2, 3,3),
                 "ERROR: sphereTest() wrong amount of integrations");
@@ -63,12 +63,12 @@ class CameraIntegrationTest {
     void triangleTest(){
 
         //TC01:test intersection with small triangle
-        Triangle triangle1 = new Triangle(new Point(1, -1,-2),new Point(0, 20,-2), new Point(-1, -1,-2));
+        Triangle triangle1 = new Triangle(new Point(1, -1,-2),new Point(0, 1,-2), new Point(-1, -1,-2));
         assertEquals(1,
                 generalIntegration(triangle1, camera,3,3),
                 "ERROR: triangleTest() wrong amount of integrations");
         //TC02:test intersection with big triangle
-        Triangle triangle2 = new Triangle(new Point(1, -1,-2),new Point(0, 1,-2), new Point(-1, -1,-2));
+        Triangle triangle2 = new Triangle(new Point(1, -1,-2),new Point(0, 20,-2), new Point(-1, -1,-2));
         assertEquals(2,
                 generalIntegration(triangle2,camera, 3,3),
                 "ERROR: triangleTest() wrong amount of integrations");
@@ -78,17 +78,17 @@ class CameraIntegrationTest {
     void planeTest(){
 
         //TC01:test intersection with small triangle
-        Plane plane1 = new Plane(new Point(0,0,-3),new Vector(0,1,0));
+        Plane plane1 = new Plane(new Point(0,0,-3),new Vector(0,0,1));
         assertEquals(9,
                 generalIntegration(plane1, camera,3,3),
                 "ERROR: planeTest() wrong amount of integrations");
         //TC02:
-        Plane plane2 = new Plane(new Point(0,0,-3),new Vector(0,2,1));
+        Plane plane2 = new Plane(new Point(0,0,-3),new Vector(0,1,-2));
         assertEquals(9,
                 generalIntegration(plane2,camera, 3,3),
                 "ERROR: planeTest() wrong amount of integrations");
         //TC03:
-        Plane plane3 = new Plane(new Point(0,0,-3),new Vector(0,1,2));
+        Plane plane3 = new Plane(new Point(0,0,-3),new Vector(0,2,-1));
         assertEquals(6,
                 generalIntegration(plane3,camera, 3,3),
                 "ERROR: planeTest() wrong amount of integrations");

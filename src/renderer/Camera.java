@@ -22,7 +22,7 @@ public class Camera {
         this.location = location;
         this.vUp = vUp.normalize();
         this.vTo = vTo.normalize();
-        this.vRight = (vTo.crossProduct(vUp)).normalize();
+        this.vRight = (vUp.crossProduct(vTo)).normalize();
 
     }
     public Point getLocation() {
@@ -76,8 +76,8 @@ public class Camera {
         Point pIJ = location.add(vTo.scale(distance));
         double rY = alignZero(height / nY);
         double rX = alignZero(width / nX);
-        double yI = alignZero((i- (nY - 1)/2) *( (-1) * rY));
-        double xJ = alignZero((j- (nX - 1)/2) *( (-1) * rX));
+        double yI = alignZero((i- (nY - 1.0)/2.0) *( (-1) * rY));
+        double xJ = alignZero((j- (nX - 1.0)/2.0) *( (-1) * rX));
         if (!isZero(yI))
             pIJ = pIJ.add(vUp.scale(yI));
         if (!isZero(xJ))

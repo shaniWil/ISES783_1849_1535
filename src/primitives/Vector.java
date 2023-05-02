@@ -86,9 +86,9 @@ public class Vector extends Point {
 
         double len = length();
         return new Vector (
-                Math.round(xyz.d1/len),
-                Math.round(xyz.d2/len),
-                Math.round(xyz.d3/len)
+                (xyz.d1/len),
+                (xyz.d2/len),
+                (xyz.d3/len)
         );
     }
 
