@@ -34,7 +34,7 @@ public class Sphere extends RadialGeometry implements Geometry {
     @Override
     public List<Point> findIntsersections(Ray ray) {
         Point rayP0 = ray.getP0(); //( -3,0,0)
-        Vector rayDir = ray.getDir(); // (0,0,1)
+        Vector rayDir = ray.getDir().normalize(); // (0,0,1)
 
         if (rayP0.equals(center))
             return List.of((rayP0.add(rayDir.scale(radius))));

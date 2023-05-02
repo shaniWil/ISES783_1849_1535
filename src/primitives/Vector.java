@@ -1,4 +1,5 @@
 package primitives;
+import java.lang.Math; // Needed to use Math.round()
 
 /** Vector class represents vector in 3D Cartesian coordinate system
     @author Raaya Feldmar & Shani Wilamowsky */
@@ -85,9 +86,9 @@ public class Vector extends Point {
 
         double len = length();
         return new Vector (
-                xyz.d1/len,
-                xyz.d2/len,
-                xyz.d3/len
+                Math.round(xyz.d1/len),
+                Math.round(xyz.d2/len),
+                Math.round(xyz.d3/len)
         );
     }
 

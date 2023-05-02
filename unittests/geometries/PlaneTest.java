@@ -85,7 +85,7 @@ class PlaneTest {
         //TC12: Ray is orthogonal to the plane and 𝑃0 begins before the plane.
         //assertEquals(new Point(0.6,0.2,0.2),
                 //plane3.findIntsersections(new Ray((new Point(0.5,0,0)),
-                        //new Vector(new Double3(1,1,1))))
+                  //      new Vector(new Double3(1,1,1)))),
                 //"ERROR: FindIntsersections() the ray is orthogonal to the plane and p0  begins before the plane");
         //TC13: Ray is orthogonal to the plane and 𝑃0 begins in the plane.
         assertEquals(null,
