@@ -4,11 +4,12 @@ import primitives.Point;
 import primitives.Ray;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Geometries implements Intersectable {
-    private List<Intersectable> geometries;
+    private final List<Intersectable> geometries;
 
     // Empty constructor.
     public Geometries() {
@@ -23,9 +24,7 @@ public class Geometries implements Intersectable {
 
     public void add(Intersectable... geometriesIn)
     {
-        for (Intersectable item : geometriesIn) {
-            geometries.add(item);
-        }
+        Collections.addAll(geometries, geometriesIn);
     }
 
 

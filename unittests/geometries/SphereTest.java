@@ -50,13 +50,9 @@ class SphereTest {
                 //sphere1.findIntsersections(new Ray((new Point(0,0,2)),new Vector(-2,0,-2)))
                 //,"ERROR: FindIntsersections() the intersection point is incorrect");
         // TC03: Ray starts after the sphere (0 points)
-        assertEquals(null,
-                sphere1.findIntsersections(new Ray((new Point(0,0,2)),new Vector(2,0,2)))
-                ,"ERROR: FindIntsersections() the intersection point is incorrect");
+        assertNull(sphere1.findIntsersections(new Ray((new Point(0, 0, 2)), new Vector(2, 0, 2))), "ERROR: FindIntsersections() the intersection point is incorrect");
         // TC04: Ray's line is outside the sphere (0 points)
-        assertEquals(null,
-                sphere1.findIntsersections(new Ray((new Point(2,0,0)),new Vector(0,-1,0)))
-                ,"ERROR: FindIntsersections() the intersection point is incorrect");
+        assertNull(sphere1.findIntsersections(new Ray((new Point(2, 0, 0)), new Vector(0, -1, 0))), "ERROR: FindIntsersections() the intersection point is incorrect");
 
         // =============== Boundary Values Tests ==================
         // **** Group: Ray's line crosses the sphere (but not the center)
@@ -65,9 +61,7 @@ class SphereTest {
                 sphere1.findIntsersections(new Ray((new Point(-2,0,0)),new Vector(-2,-2,0)))
                 ,"ERROR: FindIntsersections() the intersection point is incorrect");
         // TC12: Ray starts at sphere and goes outside (0 points)
-        assertEquals(null,
-                sphere1.findIntsersections(new Ray((new Point(-2,0,0)),new Vector(1,0,0)))
-                ,"ERROR: FindIntsersections() the intersection point is incorrect");
+        assertNull(sphere1.findIntsersections(new Ray((new Point(-2, 0, 0)), new Vector(1, 0, 0))), "ERROR: FindIntsersections() the intersection point is incorrect");
 
         // **** Group: Ray's line goes through the center
         // TC13: Ray starts before the sphere (2 points)
@@ -87,13 +81,9 @@ class SphereTest {
                 sphere1.findIntsersections(new Ray((new Point(-4,0,0)),new Vector(-1,0,0)))
                 ,"ERROR: FindIntsersections() the intersection point is incorrect");
         // TC17: Ray starts at sphere and goes outside (0 points)
-        assertEquals(null,
-                sphere1.findIntsersections(new Ray((new Point(-2,0,0)),new Vector(1,0,0)))
-                ,"ERROR: FindIntsersections() the intersection point is incorrect");
+        assertNull(sphere1.findIntsersections(new Ray((new Point(-2, 0, 0)), new Vector(1, 0, 0))), "ERROR: FindIntsersections() the intersection point is incorrect");
         // TC18: Ray starts after sphere (0 points)
-        assertEquals(null,
-                sphere1.findIntsersections(new Ray((new Point(-1,0,0)),new Vector(1,0,0)))
-                ,"ERROR: FindIntsersections() the intersection point is incorrect");
+        assertNull(sphere1.findIntsersections(new Ray((new Point(-1, 0, 0)), new Vector(1, 0, 0))), "ERROR: FindIntsersections() the intersection point is incorrect");
 
     }
 }

@@ -52,25 +52,15 @@ class TriangleTest {
                 triangle2.findIntsersections(new Ray((new Point(0,2,0)),new Vector(0,-1,1)))
                 ,"ERROR: FindIntersection() the intersection point is incorrect");
 
-        assertEquals(null,
-                triangle2.findIntsersections(new Ray((new Point(0,0,1)),new Vector(0,1,-1)))
-                ,"ERROR: FindIntersection() the intersection point is incorrect");
+        assertNull(triangle2.findIntsersections(new Ray((new Point(0, 0, 1)), new Vector(0, 1, -1))), "ERROR: FindIntersection() the intersection point is incorrect");
 
-        assertEquals(null,
-                triangle2.findIntsersections(new Ray((new Point(0,0,3)),new Vector(0,5,-3)))
-                ,"ERROR: FindIntersection() the intersection point is incorrect");
+        assertNull(triangle2.findIntsersections(new Ray((new Point(0, 0, 3)), new Vector(0, 5, -3))), "ERROR: FindIntersection() the intersection point is incorrect");
 
         // =============== Boundary Values Tests ==================
-        assertEquals(null, // על צלע
-                triangle2.findIntsersections(new Ray((new Point(0,0,2)),new Vector(2,2,-2)))
-                ,"ERROR: FindIntersection() the intersection point is incorrect");
+        assertNull(triangle2.findIntsersections(new Ray((new Point(0, 0, 2)), new Vector(2, 2, -2))), "ERROR: FindIntersection() the intersection point is incorrect");
         // על קוקוד
-        assertEquals(null,
-                triangle2.findIntsersections(new Ray((new Point(0,0,3)),new Vector(-4,0,-3)))
-                ,"ERROR: FindIntersection() the intersection point is incorrect");
+        assertNull(triangle2.findIntsersections(new Ray((new Point(0, 0, 3)), new Vector(-4, 0, -3))), "ERROR: FindIntersection() the intersection point is incorrect");
 
-        assertEquals(null,
-                triangle2.findIntsersections(new Ray((new Point(0,0,2)),new Vector(5,0,-2)))
-                ,"ERROR: FindIntersection() the intersection point is incorrect");
+        assertNull(triangle2.findIntsersections(new Ray((new Point(0, 0, 2)), new Vector(5, 0, -2))), "ERROR: FindIntersection() the intersection point is incorrect");
     }
 }

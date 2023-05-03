@@ -1,5 +1,6 @@
 package primitives;
 
+import java.util.List;
 import java.util.Objects;
 
 /** Ray class represents ray in 3D Cartesian coordinate system
@@ -31,6 +32,25 @@ public class Ray {
     public Point getPoint(double t) {
         return p0.add(dir.scale(t));
     }
+
+    public Point findClosestPoint(List<Point> points) {
+        if (points.isEmpty())
+            return null;
+
+        Point closestPoint = points.get(0);
+        Double closestDistance = closestPoint.distance(p0.xyz);
+
+        for (Point tempPoint : points) {
+
+            if (tempPoint.distance(p0.xyz) < closestDistance) {
+                // to create an object?
+                closestDistance = tempPoint.distance(p0.xyz);
+                closestPoint = tempPoint;
+            }
+        }
+        return closestPoint;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
