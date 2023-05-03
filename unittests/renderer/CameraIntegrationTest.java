@@ -10,7 +10,12 @@ import primitives.Ray;
 import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * Testing Camera Integrations
+ *
+ * @author Raaya Feldmar & Shani Wilamowsky
+ *
+ */
 class CameraIntegrationTest {
     Camera camera = new Camera(new Point(0,0,0),new Vector(0,0,-1), new Vector(0,1,0))
             .setVPSize(3,3)
@@ -18,7 +23,12 @@ class CameraIntegrationTest {
     Camera camera2 = new Camera(new Point(0,0,0.5),new Vector(0,0,-1), new Vector(0,1,0))
             .setVPSize(3,3)
             .setVPDistance(1);
-
+    /**
+     * @param geometry body
+     * @param camera camera for test
+     * @param nX j for view plane
+     * @param nY i for view plane
+     */
     int generalIntegration(Geometry geometry, Camera camera,int nX, int nY) {
         int count = 0;
         for (int i =0; i<nY; i++)
@@ -67,7 +77,7 @@ class CameraIntegrationTest {
         assertEquals(1,
                 generalIntegration(triangle1, camera,3,3),
                 "ERROR: triangleTest() wrong amount of integrations");
-        //TC02:test intersection with big triangle
+        //TC02: test intersection with big triangle
         Triangle triangle2 = new Triangle(new Point(1, -1,-2),new Point(0, 20,-2), new Point(-1, -1,-2));
         assertEquals(2,
                 generalIntegration(triangle2,camera, 3,3),

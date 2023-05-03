@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1668f80d-d29d-43f8-82d9-a816d4680a2d" name="Changes" comment="test with problems">
+    <list default="true" id="1668f80d-d29d-43f8-82d9-a816d4680a2d" name="Changes" comment="Stage3 almost final.">
+      <change afterPath="$PROJECT_DIR$/src/primitives/Color.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/ImageWriter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unittests/renderer/ImageWriterTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Vector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/TriangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TriangleTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/renderer/CameraIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/CameraIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -323,11 +323,6 @@
           <url>file://$PROJECT_DIR$/unittests/renderer/CameraTest.java</url>
           <line>24</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/unittests/renderer/CameraIntegrationTest.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
