@@ -6,6 +6,7 @@ import primitives.Ray;
 import scene.Scene;
 
 import java.util.List;
+import geometries.Intersectable.GeoPoint;
 
 /**
  * Implementation of the abstract class RayTracerBase.
@@ -20,11 +21,11 @@ public class RayTracerBasic extends RayTracerBase {
 
     @Override
     public Color traceRay(Ray ray) {
-        List<Point> intersectionPoints = scene.geometries.findIntsersections(ray);
-        if (intersectionPoints == null)
+        List<GeoPoint> intersectionGeoPoints = scene.geometries.findGeoIntersections(ray);
+        if (intersectionGeoPoints == null)
             return this.scene.background;
-        Point point = ray.findClosestPoint(intersectionPoints);
-        return calcColor(point);
+        GeoPoint geoPoint = ray.findClosestGeoPoint(intersectionGeoPoints);
+        return calcColor(geoPoint);
     }
 
     /**
@@ -34,7 +35,7 @@ public class RayTracerBasic extends RayTracerBase {
      * @param point calculate the color of this point
      * @return for now - the ambient light's intensity
      */
-    private Color calcColor(Point point) {
-        return scene.ambientLight.getIntensity();
+    private Color calcColor(GeoPoint geoPoint) {
+        return scene.ambientLight.getIntensity().add(geoPoint.geometry.getEmission());
     }
 }

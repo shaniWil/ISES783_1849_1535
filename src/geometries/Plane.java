@@ -12,7 +12,7 @@ import static primitives.Util.isZero;
 
 /** This class represents a plane, will serve the flat bodies
  * @author Raaya Feldmar & Shani Wilamowsky */
-public class Plane implements Geometry {
+public class Plane extends Geometry {
     private final Point q0;
     private final Vector normal;
 
@@ -65,7 +65,7 @@ public class Plane implements Geometry {
     }
 
     @Override
-    public List<Point> findIntsersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         Vector rayDirection = ray.getDir();
         Point rayP0 = ray.getP0();
 
@@ -76,7 +76,7 @@ public class Plane implements Geometry {
             return null;
         double t = alignZero(alignZero(normal.dotProduct(q0.subtract(rayP0)) / nv));
         if (t > 0)
-             return List.of(rayP0.add((rayDirection).scale(t)));
+            return List.of(new GeoPoint(this, rayP0.add((rayDirection).scale(t))));
         return null;
     }
 }
