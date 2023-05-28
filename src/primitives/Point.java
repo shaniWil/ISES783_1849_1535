@@ -61,10 +61,10 @@ public class Point {
      * @param secondDouble3 second point operand for the distance
      * @return the distance squared
      */
-    public double distanceSquared(Double3 secondDouble3) {
-        return (xyz.d1 - secondDouble3.d1) * (xyz.d1 - secondDouble3.d1) +
-                (xyz.d2 - secondDouble3.d2) * (xyz.d2 - secondDouble3.d2) +
-                (xyz.d3 - secondDouble3.d3) * (xyz.d3 - secondDouble3.d3);
+    public double distanceSquared(Point secondDouble3) {
+        return (xyz.d1 - secondDouble3.xyz.d1) * (xyz.d1 - secondDouble3.xyz.d1) +
+                (xyz.d2 - secondDouble3.xyz.d2) * (xyz.d2 - secondDouble3.xyz.d2) +
+                (xyz.d3 - secondDouble3.xyz.d3) * (xyz.d3 - secondDouble3.xyz.d3);
     }
 
     /**
@@ -73,7 +73,7 @@ public class Point {
      * @param secondDouble3 second point operand for the distance
      * @return the distance
      */
-    public double distance(Double3 secondDouble3) {
+    public double distance(Point secondDouble3) {
         return Math.sqrt(distanceSquared(secondDouble3));
     }
 

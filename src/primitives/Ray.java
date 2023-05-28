@@ -44,13 +44,13 @@ public class Ray {
             return null;
 
         GeoPoint closestPoint = geoPoints.get(0);
-        Double closestDistance = closestPoint.point.distance(p0.xyz);
+        Double closestDistance = closestPoint.point.distance(p0);
 
         for (GeoPoint tempGeoPoint : geoPoints) {
 
-            if (tempGeoPoint.point.distance(p0.xyz) < closestDistance) {
+            if (tempGeoPoint.point.distance(p0) < closestDistance) {
                 // to create an object?
-                closestDistance = tempGeoPoint.point.distance(p0.xyz);
+                closestDistance = tempGeoPoint.point.distance(p0);
                 closestPoint = tempGeoPoint;
             }
         }
