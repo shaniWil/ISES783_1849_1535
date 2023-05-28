@@ -65,16 +65,16 @@ class PlaneTest {
         // ============ Equivalence Partitions Tests ==============
         // TC01: The Ray neither orthogonal nor parallel to the plane and  intersects the plane.
         assertEquals(List.of(point4),
-                plane3.findIntsersections(new Ray((new Point(0,0,2)),v2))
+                plane3.findIntersections(new Ray((new Point(0,0,2)),v2))
                 ,"ERROR: FindIntsersections() the intersection point is incorrect");
         // TC02: The Ray neither orthogonal nor parallel to the plane and do not intersect the plane.
-        assertNull(plane3.findIntsersections(new Ray((new Point(0, 0, 2)), v1)), "ERROR: FindIntsersections() the ray do not intersect the plane");
+        assertNull(plane3.findIntersections(new Ray((new Point(0, 0, 2)), v1)), "ERROR: FindIntsersections() the ray do not intersect the plane");
         // =============== Boundary Values Tests ==================
         //TC10: Ray is parallel to the plane and  included in the plane.
-        assertNull(plane3.findIntsersections(new Ray((new Point(1, 0, 0)),
+        assertNull(plane3.findIntersections(new Ray((new Point(1, 0, 0)),
                 new Vector(new Double3(0, -1, 1)))), "ERROR: FindIntsersections() the ray is parallel to the plane and included");
         //TC11: Ray is parallel to the plane and not included in the plane.
-        assertNull(plane3.findIntsersections(new Ray((new Point(2, 0, 0)),
+        assertNull(plane3.findIntersections(new Ray((new Point(2, 0, 0)),
                 new Vector(new Double3(0, -1, 1)))), "ERROR: FindIntsersections() the ray is parallel to the plane and not included");
         //TC12: Ray is orthogonal to the plane and 𝑃0 begins before the plane.
         //assertEquals(new Point(0.6,0.2,0.2),
@@ -82,15 +82,15 @@ class PlaneTest {
                   //      new Vector(new Double3(1,1,1)))),
                 //"ERROR: FindIntsersections() the ray is orthogonal to the plane and p0  begins before the plane");
         //TC13: Ray is orthogonal to the plane and 𝑃0 begins in the plane.
-        assertNull(plane3.findIntsersections(new Ray((po1),
+        assertNull(plane3.findIntersections(new Ray((po1),
                 new Vector(new Double3(1, 1, 1)))), "ERROR: FindIntsersections() the ray is orthogonal to the plane p0 begins in the plane");
         //TC14: Ray is orthogonal to the plane and 𝑃0 begins after the plane.
-        assertNull(plane3.findIntsersections(new Ray((new Point(1.5, 0, 0)),
+        assertNull(plane3.findIntersections(new Ray((new Point(1.5, 0, 0)),
                 new Vector(new Double3(1, 1, 1)))), "ERROR: FindIntsersections() the ray is orthogonal to the plane and p0 begins after the plane");
         //TC15: Ray is neither orthogonal nor parallel to and begins at the plane.
-        assertNull(plane3.findIntsersections(new Ray((point4), v2)), "ERROR: FindIntsersections() the ray is neither orthogonal nor parallel to and begins at the plane");
+        assertNull(plane3.findIntersections(new Ray((point4), v2)), "ERROR: FindIntsersections() the ray is neither orthogonal nor parallel to and begins at the plane");
         //TC16: Ray is neither orthogonal nor parallel to and begins in the same point which appears as reference point in the plane.
-        assertNull(pl2.findIntsersections(new Ray((po1), v2)), "ERROR: FindIntsersections() the ray is neither orthogonal nor parallel to and begins in " +
+        assertNull(pl2.findIntersections(new Ray((po1), v2)), "ERROR: FindIntsersections() the ray is neither orthogonal nor parallel to and begins in " +
                 "the same point which appears as reference point in the plane");
     }
 }

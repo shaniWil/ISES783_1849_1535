@@ -8,7 +8,7 @@ import java.util.List;
 
 /** This class represents a geometric body of cylinder type
  * @author Raaya Feldmar & Shani Wilamowsky */
-public class Cylinder  extends Tube implements Geometry {
+public class Cylinder  extends Tube {
 
     private final double height;
 
@@ -41,8 +41,4 @@ public class Cylinder  extends Tube implements Geometry {
 
     }
 
-    @Override
-    public List<Point> findIntsersections(Ray ray) {
-        return null;
-    }
 }

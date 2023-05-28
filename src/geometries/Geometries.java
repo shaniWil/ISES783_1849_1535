@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Geometries implements Intersectable {
+public class Geometries extends Intersectable {
     private final List<Intersectable> geometries;
 
     // Empty constructor.
@@ -27,41 +27,20 @@ public class Geometries implements Intersectable {
         Collections.addAll(geometries, geometriesIn);
     }
 
-
     @Override
-    public List<Point> findIntsersections(Ray ray) {
-        List<Point> Intersection = new LinkedList<>();
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+        List<GeoPoint> geoIntersection = new LinkedList<>();
 
         //go threw all the geometries and add their intersections
         for (Intersectable intersectable: geometries) {
-            List<Point> currentIntersection = intersectable.findIntsersections(ray);
+            List<GeoPoint> currentIntersection = intersectable.findGeoIntersections(ray);
             if(currentIntersection != null) //no intersection was found
-                Intersection.addAll(currentIntersection);
+                geoIntersection.addAll(currentIntersection);
         }
 
-        if(Intersection.size() == 0)
+        if(geoIntersection.size() == 0)
             return null;
-        return Intersection;
+        return geoIntersection;
     }
-    /**if (geometries.size() == 0)
-            return null;
-        boolean flag = false;
-        for (Intersectable item : geometries) {
-            if (!item.findIntsersections(ray).isEmpty())
-                flag = true;
-            if (flag)
-                break;
-        }
-
-        if (flag) {
-            List<Point> IntsersectionPoints = new LinkedList<>();
-            for (Intersectable item : geometries) {
-               List<Point> toAdd = item.findIntsersections(ray);
-                if (!toAdd.isEmpty())
-                    IntsersectionPoints.addAll(toAdd);
-            }
-            return IntsersectionPoints;
-        }
-        return null;*/
 
 }

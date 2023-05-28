@@ -2,6 +2,7 @@ package primitives;
 
 import java.util.List;
 import java.util.Objects;
+import geometries.Intersectable.GeoPoint;
 
 /** Ray class represents ray in 3D Cartesian coordinate system
  *  @author Raaya Feldmar & Shani Wilamowsky */
@@ -34,18 +35,23 @@ public class Ray {
     }
 
     public Point findClosestPoint(List<Point> points) {
-        if (points.isEmpty())
+        return points == null || points.isEmpty() ? null
+                : findClosestGeoPoint(points.stream().map(p -> new GeoPoint(null, p)).toList()).point;
+    }
+
+    public GeoPoint findClosestGeoPoint(List<GeoPoint> geoPoints){
+        if (geoPoints.isEmpty())
             return null;
 
-        Point closestPoint = points.get(0);
-        Double closestDistance = closestPoint.distance(p0.xyz);
+        GeoPoint closestPoint = geoPoints.get(0);
+        Double closestDistance = closestPoint.point.distance(p0);
 
-        for (Point tempPoint : points) {
+        for (GeoPoint tempGeoPoint : geoPoints) {
 
-            if (tempPoint.distance(p0.xyz) < closestDistance) {
+            if (tempGeoPoint.point.distance(p0) < closestDistance) {
                 // to create an object?
-                closestDistance = tempPoint.distance(p0.xyz);
-                closestPoint = tempPoint;
+                closestDistance = tempGeoPoint.point.distance(p0);
+                closestPoint = tempGeoPoint;
             }
         }
         return closestPoint;

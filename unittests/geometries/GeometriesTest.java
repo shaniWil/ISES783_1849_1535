@@ -23,29 +23,29 @@ class GeometriesTest {
         Ray ray = new Ray(new Point(0,-4,0), new Vector(0,4,1));
 
         assertEquals(3,
-                geometries.findIntsersections(ray).size(),
+                geometries.findIntersections(ray).size(),
                 "ERROR: FindIntsersections() the amount of intersection points is incorrect"  );
 
         // =============== Boundary Values Tests ==================
         // TC11: The ray intersects all the geometriesc
         ray = new Ray(new Point(0,-4,0), new Vector(0,1,-1));
         assertEquals(1,
-                geometries.findIntsersections(ray).size(),
+                geometries.findIntersections(ray).size(),
                 "ERROR: FindIntsersections() Only one of the geometries intersects" );
         // TC12: The ray intersects one of the geometries
         ray = new Ray(new Point(0,-4,0), new Vector(0,4,4));
         assertEquals(1,
-                geometries.findIntsersections(ray).size(),
+                geometries.findIntersections(ray).size(),
                 "ERROR: FindIntsersections() Only one of the geometries intersects" );
         
         // TC13: The ray does not intersect any geometries (0 points)
         ray = new Ray(new Point(0,-4,0), new Vector(0,0,1));
-        assertNull(geometries.findIntsersections(ray),
+        assertNull(geometries.findIntersections(ray),
                 "ERROR: FindIntsersections() The ray does not intersect any geometries ,found an intersection point" );
 
         // TC14: Empty collection of geometries
         geometries = new Geometries();
-        assertNull(geometries.findIntsersections(ray),
+        assertNull(geometries.findIntersections(ray),
                 "ERROR: FindIntsersections() Empty collection of geometries, no intersections" );
 
 

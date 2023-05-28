@@ -8,7 +8,7 @@ import java.util.List;
 
 /** This class represents a radial geometric body of tube type and will serve all classes based on tube
  * @author Raaya Feldmar & Shani Wilamowsky */
-public class Tube extends RadialGeometry implements Geometry {
+public class Tube extends RadialGeometry {
 
     /** The cylinder axis */
     protected final Ray axisRay;
@@ -44,7 +44,7 @@ public class Tube extends RadialGeometry implements Geometry {
     }
 
     @Override
-    public List<Point> findIntsersections(Ray ray) {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         return null;
     }
 }

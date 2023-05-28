@@ -5,7 +5,6 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
-import java.util.MissingFormatArgumentException;
 import java.util.MissingResourceException;
 
 import static primitives.Util.alignZero;
@@ -22,7 +21,7 @@ public class Camera {
     private double width;
     private double distance;
     private ImageWriter imageWriter;
-    private RayTracerBase rayTracerBase;
+    private RayTracerBase rayTracer;
 
     public Camera(Point location, Vector vTo, Vector vUp) {
         if (!isZero(vUp.dotProduct(vTo)))
@@ -79,18 +78,13 @@ public class Camera {
         return this;
     }
 
-    public Camera setRayTracerBase(RayTracerBase rayTracerBaseIn) {
-        this.rayTracerBase = rayTracerBaseIn;
-        return this;
-    }
-
-    public Camera setImageWriter(ImageWriter ImageWriterIn) {
+   public  Camera setImageWriter(ImageWriter ImageWriterIn) {
         this.imageWriter = ImageWriterIn;
         return this;
     }
 
-    public Camera setRayTracer(RayTracerBase rayTracerBaseIn) {
-        this.rayTracerBase = rayTracerBaseIn;
+    public Camera setRayTracer(RayTracerBase rayTracer) {
+        this.rayTracer = rayTracer;
         return this;
     }
     
@@ -116,7 +110,7 @@ public class Camera {
     }
 
     private Color castRay(int j, int i) {
-        return rayTracerBase.traceRay(constructRay(imageWriter.getNx(), imageWriter.getNy(), j, i));
+        return rayTracer.traceRay(constructRay(imageWriter.getNx(), imageWriter.getNy(), j, i));
     }
     
     /**
@@ -125,22 +119,22 @@ public class Camera {
      * and the image writer to color the pixels
      * @throws MissingResourceException if one of the fields are uninitialized
      */
-    public void renderImage() {
+    public Camera renderImage() {
         if (imageWriter == null)
             throw new MissingResourceException("All of the filed should be initialized",
                     "Camera",
                     "imageWriter");
-        if (rayTracerBase == null)
+        if (rayTracer == null)
             throw new MissingResourceException("All of the filed should be initialized",
                     "Camera",
-                    "rayTracerBase");
-
+                    "rayTracer");
         for (int i = 0; i < imageWriter.getNx(); i++) {
             for (int j = 0; j < imageWriter.getNy(); j++) {
                 imageWriter.writePixel(j, i, castRay(j, i));
             }
 
         }
+        return this;
     }
 
     /**
@@ -150,11 +144,14 @@ public class Camera {
     * @throws MissingResourceException
     */
     public void printGrid(int interval, Color color) {
-        renderImage();
-        for (int i = 0; i < imageWriter.getNx(); i++) {
+      //  renderImage();
+        for (int i = 0; i < imageWriter.getNx(); i+=interval) {
             for (int j = 0; j < imageWriter.getNy(); j++)
-                if (i % interval == 0 || j % interval == 0)
-                    imageWriter.writePixel(i, j, color);
+                imageWriter.writePixel(i, j, color);
+        }
+        for (int i = 0; i < imageWriter.getNx(); i++) {
+            for (int j = 0; j < imageWriter.getNy(); j += interval)
+                imageWriter.writePixel(i, j, color);
         }
     }
 

@@ -5,7 +5,7 @@ import primitives.Vector;
 
 /** This abstract class will serve all radial geometric bodies
  * @author Raaya Feldmar & Shani Wilamowsky */
-public abstract class RadialGeometry implements Geometry {
+public abstract class RadialGeometry extends Geometry {
 
     /** All radial geometries have a radius*/
     protected final double radius;

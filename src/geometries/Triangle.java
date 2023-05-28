@@ -20,7 +20,7 @@ public class Triangle extends Polygon {
     }
 
     @Override
-    public List<Point> findIntsersections(Ray ray) {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         Point p0 = ray.getP0();
         Vector rayDir = ray.getDir();
         Vector vector1 = vertices.get(0).subtract(p0);
@@ -35,11 +35,16 @@ public class Triangle extends Polygon {
         double dot2 = rayDir.dotProduct(n2);
         double dot3 = rayDir.dotProduct(n3);
 
-        if (dot1 > 0 && dot2 > 0 && dot3 > 0)
-            return plane.findIntsersections(ray);
 
-        if (dot1 < 0 && dot2 < 0 && dot3 < 0)
-            return plane.findIntsersections(ray);
+        if (dot1 > 0 && dot2 > 0 && dot3 > 0) {
+            var geoList = plane.findGeoIntersections(ray);
+            return geoList == null ? null : geoList.stream().map(gp -> (new GeoPoint(this, gp.point))).toList();
+        }
+
+        if (dot1 < 0 && dot2 < 0 && dot3 < 0) {
+            var geoList = plane.findGeoIntersections(ray);
+            return geoList == null ? null : geoList.stream().map(gp -> (new GeoPoint(this, gp.point))).toList();
+        }
         return null;
     }
 }

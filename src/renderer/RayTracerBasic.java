@@ -1,11 +1,15 @@
 package renderer;
 
-import primitives.Color;
-import primitives.Point;
-import primitives.Ray;
+import lighting.LightSource;
+import primitives.*;
 import scene.Scene;
 
 import java.util.List;
+
+import geometries.Intersectable.GeoPoint;
+
+import static java.lang.Math.abs;
+import static primitives.Util.alignZero;
 
 /**
  * Implementation of the abstract class RayTracerBase.
@@ -20,11 +24,45 @@ public class RayTracerBasic extends RayTracerBase {
 
     @Override
     public Color traceRay(Ray ray) {
-        List<Point> intersectionPoints = scene.geometries.findIntsersections(ray);
-        if (intersectionPoints == null)
+        List<GeoPoint> intersectionGeoPoints = scene.geometries.findGeoIntersections(ray);
+        if (intersectionGeoPoints == null)
             return this.scene.background;
-        Point point = ray.findClosestPoint(intersectionPoints);
-        return calcColor(point);
+        GeoPoint geoPoint = ray.findClosestGeoPoint(intersectionGeoPoints);
+        return calcColor(geoPoint, ray);
+    }
+
+    private Double3 calcDiffusive(Material material, double nl)
+    {
+        return  material.kD.scale(abs(nl));
+    }
+
+    private Color calcSpecular(Double3 ks, Vector l, Vector n, Vector v, int nShininess, Color lightIntensity) {
+        Vector r = l.subtract(n.scale(2 * l.dotProduct(n))).normalize();    // the specular ray
+
+        // the phong model formula for the specular effect: ks ∙ ( 𝒎𝒂𝒙 (𝟎, −𝒗 ∙ 𝒓) ^ 𝒏𝒔𝒉 ) ∙ 𝑰
+        return lightIntensity
+                .scale(ks.scale(alignZero(Math.pow(Math.max(0, v.scale(-1).dotProduct(r)),
+                        nShininess))));
+    }
+
+    private Color calcLocalEffects(GeoPoint geoPoint, Ray ray)
+    {
+        Color color= geoPoint.geometry.getEmission();
+        Vector v= ray.getDir();
+        Vector n= geoPoint.geometry.getNormal(geoPoint.point);
+        double nv = alignZero(n.dotProduct(v));
+        if (nv == 0) return color;
+        Material material = geoPoint.geometry.getMaterial();
+        for (LightSource lightSource : scene.lights) {
+            Vector l = lightSource.getL(geoPoint.point);
+            double nl = alignZero(n.dotProduct(l));
+            if (nl * nv > 0) { // sign(nl) == sing(nv)
+                Color iL = lightSource.getIntensity(geoPoint.point);
+                color = color.add(iL.scale(calcDiffusive(material, nl)),
+                        calcSpecular(material.kS, l, n, v, material.kShininess, iL));
+            }
+        }
+        return color;
     }
 
     /**
@@ -34,7 +72,7 @@ public class RayTracerBasic extends RayTracerBase {
      * @param point calculate the color of this point
      * @return for now - the ambient light's intensity
      */
-    private Color calcColor(Point point) {
-        return scene.ambientLight.getIntensity();
+    private Color calcColor(GeoPoint geoPoint, Ray ray) {
+        return scene.ambientLight.getIntensity().add(calcLocalEffects(geoPoint, ray));
     }
 }

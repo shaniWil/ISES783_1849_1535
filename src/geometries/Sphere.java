@@ -10,7 +10,7 @@ import static primitives.Util.alignZero;
 
 /** This class represents a geometric body of sphere type
  * @author Raaya Feldmar & Shani Wilamowsky */
-public class Sphere extends RadialGeometry implements Geometry {
+public class Sphere extends RadialGeometry {
     private final Point center;
 
     /** Constructor to initialize Sphere based object by his radius and center point
@@ -32,12 +32,12 @@ public class Sphere extends RadialGeometry implements Geometry {
     }
 
     @Override
-    public List<Point> findIntsersections(Ray ray) {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         Point rayP0 = ray.getP0(); //( -3,0,0)
         Vector rayDir = ray.getDir().normalize(); // (0,0,1)
 
         if (rayP0.equals(center))
-            return List.of((rayP0.add(rayDir.scale(radius))));
+            return List.of(new GeoPoint(this,(rayP0.add(rayDir.scale(radius)))));
 
         Vector u = center.subtract(rayP0); // (1,0,0)
         double tm = alignZero(u.dotProduct(rayDir)); // (0,0,0)
@@ -49,20 +49,14 @@ public class Sphere extends RadialGeometry implements Geometry {
         double t2 = tm + th;
 
         if (t1 > 0 && t2 > 0)
-           return List.of((rayP0.add(rayDir.scale(t1))),(rayP0.add(rayDir.scale(t2))));
+            return List.of(new GeoPoint(this,(rayP0.add(rayDir.scale(t1)))),(new GeoPoint(this,(rayP0.add(rayDir.scale(t2))))));
 
         if (t1 > 0)
-            return List.of((rayP0.add(rayDir.scale(t1))));
+            return List.of(new GeoPoint(this,(rayP0.add(rayDir.scale(t1)))));
 
         if (t2 > 0)
-            return List.of((rayP0.add(rayDir.scale(t2))));
+            return List.of(new GeoPoint(this,rayP0.add(rayDir.scale(t2))));
 
         return null;
-
-
-
-
-
-
     }
 }

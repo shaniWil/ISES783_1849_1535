@@ -44,13 +44,13 @@ class PointTest {
         // ============ Equivalence Partitions Tests ==============
         // TC01: Test distance squared between two points.
         assertEquals(5d,
-                p1.distanceSquared(new Double3(1, 2, 3)),
+                p1.distanceSquared(new Point(new Double3(1, 2, 3))),
                 "distanceSquared()  wrong result");
 
         // =============== Boundary Values Tests ==================
         // TC10: Test that distance squared from a point to herself is indeed 0.
         assertEquals(0d,
-                p1.distanceSquared(new Double3(1, 1, 1)),
+                p1.distanceSquared(new Point(new Double3(1, 1, 1))),
                 "distanceSquared()  wrong result");
     }
 
@@ -59,13 +59,13 @@ class PointTest {
         // ============ Equivalence Partitions Tests ==============
         // TC01: Test distance between two points.
         assertEquals(2d,
-                p1.distance(new Double3(1, 1, 3)),
+                p1.distance(new Point(new Double3(1, 1, 3))),
                 "distance()  wrong result");
 
         // =============== Boundary Values Tests ==================
         // TC10: Test that distance from a point to herself is indeed 0.
         assertEquals(0d,
-                p1.distance(new Double3(1, 1, 1)),
+                p1.distance(new Point(new Double3(1, 1, 1))),
                 "distance()  wrong result");
     }
 
