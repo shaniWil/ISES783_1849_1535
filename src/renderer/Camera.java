@@ -23,6 +23,12 @@ public class Camera {
     private ImageWriter imageWriter;
     private RayTracerBase rayTracer;
 
+    /**
+     * constructor of camera
+     * @param location of the camera
+     * @param vTo vector
+     * @param vUp vector
+     */
     public Camera(Point location, Vector vTo, Vector vUp) {
         if (!isZero(vUp.dotProduct(vTo)))
             throw new IllegalArgumentException("vUp and vTO are not orthogonal");
@@ -31,6 +37,17 @@ public class Camera {
         this.vTo = vTo.normalize();
         this.vRight = (vUp.crossProduct(vTo)).normalize();
 
+    }
+
+    protected Vector scaleDegreesXY(Vector vector, int degrees)
+    {
+        return vector;
+    }
+
+    public Camera spinCamera(double r, int amount){
+        Point center = location.add(vTo.scale(r));
+
+        return this;
     }
 
     // getters & setters.

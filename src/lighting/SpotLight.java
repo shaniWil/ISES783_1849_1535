@@ -4,16 +4,29 @@ import primitives.Color;
 import primitives.Point;
 import primitives.Vector;
 
-
+/**
+ * This class represents a light of Spotlight type
+ * @author Raaya Feldmar & Shani Wilamowsky
+ */
 public class SpotLight extends PointLight{
     Vector direction;
 
-
-    public SpotLight(Color intensity, Point positionIn, Vector directionIn) {
-        super(intensity, positionIn);
-        direction = directionIn.normalize();
+    /**
+     * constructor of SpotLight
+     * @param intensity the intensity of the light (color)
+     * @param position the location of the source light
+     * @param direction attenuation coefficient
+     */
+    public SpotLight(Color intensity, Point position, Vector direction) {
+        super(intensity, position);
+        this.direction = direction.normalize();
     }
 
+    /**
+     * setter direction at Builder Method pattern
+     * @param direction
+     * @return the Light
+     */
     public SpotLight setDirection(Vector direction) {
         this.direction = direction.normalize();
         return this;

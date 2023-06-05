@@ -4,9 +4,18 @@ import primitives.Color;
 import primitives.Point;
 import primitives.Vector;
 
+/**
+ * This class represents a light of Direction Light type
+ * @author Raaya Feldmar & Shani Wilamowsky
+ */
 public class DirectionalLight extends Light implements LightSource{
     Vector direction;
 
+    /**
+     * setter direction at Builder Method pattern
+     * @param direction
+     * @return the Light
+     */
     public DirectionalLight setDirection(Vector direction) {
         this.direction = direction;
         return this;

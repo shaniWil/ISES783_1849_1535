@@ -39,6 +39,11 @@ public class RayTracerBasic extends RayTracerBase {
         }
         return true;
     }
+
+    /**
+     * constructor of RayTracerBasic
+     * @param scene
+     */
     public RayTracerBasic(Scene scene) {
         super(scene);
     }
@@ -93,7 +98,8 @@ public class RayTracerBasic extends RayTracerBase {
      * calculating the color of a specific point, taking into account the lightning,
      * transparency of the point itself and other affects of the surrounding are of the point in space
      *
-     * @param point calculate the color of this point
+     * @param geoPoint calculate the color of this point
+     * @param ray the ray that the geoPoint on it.
      * @return for now - the ambient light's intensity
      */
     private Color calcColor(GeoPoint geoPoint, Ray ray) {

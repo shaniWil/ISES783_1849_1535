@@ -10,6 +10,11 @@ import primitives.*;
 import renderer.*;
 import scene.Scene;
 
+/**
+ * Unit tests for the lights
+ *
+ * @author Raaya Feldmar & Shani Wilamowsky
+ */
 class LightTest {
     private final Scene scene1 = new Scene("Test scene");
     private final Scene scene2 = new Scene("Test scene")
@@ -154,19 +159,41 @@ class LightTest {
                 .writeToImage(); //
     }
 
+    /**
+     * Produce a picture of sphere lighted by a multi lights.
+     */
     @Test
     public void sphereMultipleLights() {
         scene1.geometries.add(sphere);
         scene1.lights.add(new DirectionalLight(new Color(250, 0,0), new Vector(0, -10, -0.5)));
-        scene1.lights.add(new PointLight(new Color(0,250,0), sphereLightPosition)
+        scene1.lights.add(new PointLight(new Color(250,250,0), sphereLightPosition)
                 .setKl(0.001).setKq(0.0002));
-        scene1.lights.add(new SpotLight(new Color(100, 250, 250), new Point(100, 50, -25), new Vector(-2, -0.1, 0.1))
+        scene1.lights.add(new SpotLight(new Color(0, 250, 250), new Point(100, 50, -25), new Vector(-2, -0.1, 0.1))
                   .setKl(0.001).setKq(0.0001));
 
 
         ImageWriter imageWriter = new ImageWriter("multiLightSphere", 500, 500);
         camera1.setImageWriter(imageWriter) //
                 .setRayTracer(new RayTracerBasic(scene1)) //
+                .renderImage() //
+                .writeToImage(); //
+    }
+
+    /**
+     * Produce a picture of two triangles lighted by a spotlight
+     */
+    @Test
+    public void trianglesMultiLights() {
+        scene2.geometries.add(triangle1, triangle2);
+        scene2.lights.add(new DirectionalLight(new Color(250, 0,0), new Vector(25, 10, -100)));
+        scene2.lights.add(new PointLight(new Color(250,250,0), trianglesLightPosition)
+                .setKl(0.001).setKq(0.0002));
+        scene2.lights.add(new SpotLight(new Color(0, 0, 250), new Point(100, 50, -25), new Vector(-1, 0, -0.5))
+                .setKl(0.001).setKq(0.0001));
+
+        ImageWriter imageWriter = new ImageWriter("lightTrianglesMulti", 500, 500);
+        camera2.setImageWriter(imageWriter) //
+                .setRayTracer(new RayTracerBasic(scene2)) //
                 .renderImage() //
                 .writeToImage(); //
     }

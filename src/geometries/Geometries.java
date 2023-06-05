@@ -8,23 +8,34 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+/** This class represents all the complex geometries body
+ * @author Raaya Feldmar & Shani Wilamowsky */
 public class Geometries extends Intersectable {
     private final List<Intersectable> geometries;
 
-    // Empty constructor.
+    /** Empty constructor.*/
     public Geometries() {
         this.geometries = new LinkedList<>();
     }
-    public Geometries(Intersectable... geometriesIn) {
+
+    /**
+     * constructor of complex geometric that get how many geometries.
+     * @param geometries
+     */
+    public Geometries(Intersectable... geometries) {
 
         this.geometries = new LinkedList<>();
 
-        geometries.addAll(Arrays.asList(geometriesIn));
+        this.geometries.addAll(Arrays.asList(geometries));
     }
 
-    public void add(Intersectable... geometriesIn)
+    /**
+     * adding geometries to geometric
+     * @param geometries
+     */
+    public void add(Intersectable... geometries)
     {
-        Collections.addAll(geometries, geometriesIn);
+        Collections.addAll(this.geometries, geometries);
     }
 
     @Override

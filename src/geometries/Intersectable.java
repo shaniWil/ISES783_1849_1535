@@ -9,6 +9,8 @@ import java.util.Objects;
  * Interface for finding intersections points
  */
 public abstract class Intersectable {
+     /**This class represents a point and the geometry that the point on it.
+      * @author Raaya Feldmar & Shani Wilamowsky*/
      public static class GeoPoint {
           public Geometry geometry;
           public Point point;
@@ -51,9 +53,16 @@ public abstract class Intersectable {
           var geoList = findGeoIntersections(ray);
           return geoList == null ? null : geoList.stream().map(gp -> gp.point).toList();
      }
+
+     /**
+      * find intersections between the ray and the geometries.
+      * @param ray
+      * @return list of geoPoints
+      */
      public List<GeoPoint> findGeoIntersections(Ray ray)
      {
           return findGeoIntersectionsHelper(ray);
      }
+
      protected abstract List<GeoPoint> findGeoIntersectionsHelper(Ray ray);
 }
