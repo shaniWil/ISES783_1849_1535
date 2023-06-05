@@ -9,6 +9,7 @@ import java.util.List;
 import geometries.Intersectable.GeoPoint;
 
 import static java.lang.Math.abs;
+import static java.lang.Math.nextUp;
 import static primitives.Util.alignZero;
 
 /**
@@ -18,9 +19,30 @@ import static primitives.Util.alignZero;
  */
 
 public class RayTracerBasic extends RayTracerBase {
+
+    private static final double DELTA = 0.1;
+
+    private boolean unshaded(GeoPoint gp, LightSource light, Vector l, Vector n,  double nl) {
+        Vector lightDirection = l.scale(-1);
+        Vector epsVector = n.scale(nl < 0 ? DELTA : -DELTA);
+        Point point = gp.point.add(epsVector);
+        Ray lightRay = new Ray(point, lightDirection);
+        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay);
+        if (intersections == null || intersections.isEmpty())
+            return true;
+        double distance = light.getDistance(gp.point);
+        Vector direction = light.getL(gp.point);
+        for (GeoPoint geoIntersection : intersections) {
+            Vector directionIntersection = light.getL(geoIntersection.point);
+            if (light.getDistance(geoIntersection.point) < distance && directionIntersection.equals(direction))
+                return false;
+        }
+        return true;
+    }
     public RayTracerBasic(Scene scene) {
         super(scene);
     }
+
 
     @Override
     public Color traceRay(Ray ray) {
@@ -57,9 +79,11 @@ public class RayTracerBasic extends RayTracerBase {
             Vector l = lightSource.getL(geoPoint.point);
             double nl = alignZero(n.dotProduct(l));
             if (nl * nv > 0) { // sign(nl) == sing(nv)
-                Color iL = lightSource.getIntensity(geoPoint.point);
-                color = color.add(iL.scale(calcDiffusive(material, nl)),
-                        calcSpecular(material.kS, l, n, v, material.kShininess, iL));
+                if(unshaded(geoPoint,lightSource,l,n,nl)) {
+                    Color iL = lightSource.getIntensity(geoPoint.point);
+                    color = color.add(iL.scale(calcDiffusive(material, nl)),
+                            calcSpecular(material.kS, l, n, v, material.kShininess, iL));
+                }
             }
         }
         return color;
