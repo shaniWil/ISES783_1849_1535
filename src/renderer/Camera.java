@@ -145,6 +145,7 @@ public class Camera {
             throw new MissingResourceException("All of the filed should be initialized",
                     "Camera",
                     "rayTracer");
+        //imageWriter.writePixel(400, 400, castRay(400, 400));
         for (int i = 0; i < imageWriter.getNx(); i++) {
             for (int j = 0; j < imageWriter.getNy(); j++) {
                 imageWriter.writePixel(j, i, castRay(j, i));

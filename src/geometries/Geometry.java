@@ -1,9 +1,6 @@
 package geometries;
 
-import primitives.Color;
-import primitives.Material;
-import primitives.Point;
-import primitives.Vector;
+import primitives.*;
 
 /**
  * This interface will serve all geometric bodies.
@@ -22,6 +19,13 @@ public abstract class Geometry extends Intersectable {
         return emission;
     }
 
+    public Double3 getKr()    {
+        return material.kR;
+    }
+
+    public Double3 getKt()    {
+        return material.kT;
+    }
     /**
      * @return the geometry's material
      */

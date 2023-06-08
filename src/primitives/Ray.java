@@ -7,6 +7,7 @@ import geometries.Intersectable.GeoPoint;
 /** Ray class represents ray in 3D Cartesian coordinate system
  *  @author Raaya Feldmar & Shani Wilamowsky */
 public class Ray {
+    private static final double DELTA = 0.1;
     private final Point p0;
     private final Vector dir;
 
@@ -20,6 +21,14 @@ public class Ray {
         this.dir = dir.normalize();
     }
 
+    public Ray(Point head, Vector direction, Vector normal){
+        if(direction.dotProduct(normal)>0)
+            this.p0= head.add(normal.scale(DELTA));
+        else if(direction.dotProduct(normal)<0)
+            this.p0= head.add(normal.scale(-DELTA));
+        else this.p0 = head;
+        this.dir = direction;
+    }
     public Vector getDir()
     {
         return dir;
@@ -40,7 +49,7 @@ public class Ray {
     }
 
     public GeoPoint findClosestGeoPoint(List<GeoPoint> geoPoints){
-        if (geoPoints.isEmpty())
+        if (geoPoints == null || geoPoints.isEmpty())
             return null;
 
         GeoPoint closestPoint = geoPoints.get(0);
