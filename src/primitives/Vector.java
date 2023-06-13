@@ -4,6 +4,9 @@ import java.lang.Math; // Needed to use Math.round()
 /** Vector class represents vector in 3D Cartesian coordinate system
     @author Raaya Feldmar & Shani Wilamowsky */
 public class Vector extends Point {
+    public static Vector X = new Vector(1,0,0);
+    public static Vector Y = new Vector(0,1,0);
+    public static Vector Z = new Vector(0,0,1);
     /**Constructor to initialize Vector based object with three number values of its point
      *@param x first number value of the point
      *@param y second number value of the point

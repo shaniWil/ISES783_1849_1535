@@ -38,16 +38,37 @@ public class Camera {
         this.vRight = (vUp.crossProduct(vTo)).normalize();
 
     }
+    public Camera(Point location,Point center) {
+        this.vTo= center.subtract(location).normalize();
+        if ((vTo.equals(Vector.Y))||vTo.equals(Vector.Y.scale(-1)))
+        {
+            this.vUp=Vector.Z;
+            this.vRight=Vector.X;
 
-    protected Vector scaleDegreesXY(Vector vector, int degrees)
-    {
-        return vector;
+        }
+        else {
+            Vector temp = Vector.Y.crossProduct(vTo);
+            this.vUp = vTo.crossProduct(temp).normalize();
+            if (!isZero(vUp.dotProduct(vTo)))
+                throw new IllegalArgumentException("vUp and vTO are not orthogonal");
+            this.vRight = (vUp.crossProduct(vTo)).normalize();
+        }
+        this.location = location;
     }
 
-    public Camera spinCamera(double r, int amount){
-        Point center = location.add(vTo.scale(r));
+    public Camera scaleDegreesXY(int degrees)
+    {
+        if (degrees % 360 == 0)
+            return this;
+        if (degrees % 180 == 0)
+            return new Camera(this.location, this.vTo, this.vUp.scale(-1));
+        Vector vRight = this.vRight;
+        Vector vUp = this.vUp.add(vRight.scale(Math.tan(degreesToRadians(degrees))));
+        return new Camera(this.location, this.vTo, vUp);
+    }
 
-        return this;
+    private double degreesToRadians(int degrees){
+        return (Math.PI/180)*degrees;
     }
 
     // getters & setters.
@@ -145,7 +166,6 @@ public class Camera {
             throw new MissingResourceException("All of the filed should be initialized",
                     "Camera",
                     "rayTracer");
-        //imageWriter.writePixel(400, 400, castRay(400, 400));
         for (int i = 0; i < imageWriter.getNx(); i++) {
             for (int j = 0; j < imageWriter.getNy(); j++) {
                 imageWriter.writePixel(j, i, castRay(j, i));

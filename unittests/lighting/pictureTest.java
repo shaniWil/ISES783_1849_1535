@@ -19,9 +19,13 @@ public class pictureTest {
 
     /** Produce a picture with all the effects */
     @Test
-    public void twoSpheres() {
+    public void thePicture() {
         Camera camera = new Camera(new Point(0, 0, 0), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
                 .setVPSize(150, 150).setVPDistance(80);
+        Camera camera1 = new Camera(new Point(-50, 0, -50), new Point(0,0,-50))//
+                .setVPSize(150, 150).setVPDistance(80);
+        Camera camera2= camera.scaleDegreesXY(20).setVPSize(150, 150).setVPDistance(80);
+        Camera camera3= camera.scaleDegreesXY(180).setVPSize(150, 150).setVPDistance(80);
 
         scene.geometries.add( //
                 new Sphere(10d, new Point(-5, -20, -70)).setEmission(new Color(BLACK)) //
@@ -49,7 +53,19 @@ public class pictureTest {
                         .setKl(0.0004).setKq(0.0000006));
         //scene.lights.add(new DirectionalLight(new Color(100, 100, 30), new Vector(-1, -1, -2)));
 
-        camera.setImageWriter(new ImageWriter("the picture", 4000, 4000)) //
+        camera.setImageWriter(new ImageWriter("the picture", 2000, 2000)) //
+                .setRayTracer(new RayTracerBasic(scene)) //
+                .renderImage() //
+                .writeToImage();
+        camera1.setImageWriter(new ImageWriter("the picture1", 2000, 2000)) //
+                .setRayTracer(new RayTracerBasic(scene)) //
+                .renderImage() //
+                .writeToImage();
+        camera2.setImageWriter(new ImageWriter("the picture2", 2000, 2000)) //
+                .setRayTracer(new RayTracerBasic(scene)) //
+                .renderImage() //
+                .writeToImage();
+        camera3.setImageWriter(new ImageWriter("the picture3", 2000, 2000)) //
                 .setRayTracer(new RayTracerBasic(scene)) //
                 .renderImage() //
                 .writeToImage();
