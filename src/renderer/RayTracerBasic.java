@@ -129,8 +129,14 @@ public class RayTracerBasic extends RayTracerBase {
         {
             for (double j=-spreading/2; j<=spreading/2;j+=spreading/(AMOUNT-1))
             {
-                color = color.add(calcColorGlobalEffect(new Ray(point,vector.add(vectorWidth.scale(i+random(-random,random)))//
-                        .add(vectorLength.scale(j+random(-random,random))),n),level,k,kx));
+                double random1 = random(-random,random);
+                while (random1 == -i)
+                    random1 = random(-random,random);
+                double random2 = random(-random,random);
+                while (random2 == -j)
+                    random2 = random(-random,random);
+                color = color.add(calcColorGlobalEffect(new Ray(point,vector.add(vectorWidth.scale(i+random1))//
+                        .add(vectorLength.scale(j+random2)),n),level,k,kx));
             }
         }
         color = color.reduce(AMOUNT*AMOUNT);

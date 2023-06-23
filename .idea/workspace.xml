@@ -4,19 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50e5635c-bddb-4d03-8255-89b5129d3e15" name="Changes" comment="add spin the camera">
-      <change afterPath="$PROJECT_DIR$/src/geometries/Square.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/renderer/GeneralTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/PointLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/PointLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Color.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Material.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBase.java" afterDir="false" />
+    <list default="true" id="50e5635c-bddb-4d03-8255-89b5129d3e15" name="Changes" comment="middle of mini p. 2">
       <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/lighting/pictureTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/lighting/pictureTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -351,7 +340,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1686677246581</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL‎-00021" summary="middle of mini p. 2">
+      <created>1687499205321</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL‎-00021" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1687499205321</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,7 +383,8 @@
     <MESSAGE value="stage 7 without build picture." />
     <MESSAGE value="stage 7 with build picture." />
     <MESSAGE value="add spin the camera" />
-    <option name="LAST_COMMIT_MESSAGE" value="add spin the camera" />
+    <MESSAGE value="middle of mini p. 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="middle of mini p. 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
