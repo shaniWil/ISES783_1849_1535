@@ -23,6 +23,8 @@ public class Camera {
     private double distance;
     private ImageWriter imageWriter;
     private RayTracerBase rayTracer;
+    private PixelManager pixelManager;
+    private int threadsCount = 0;
 
     /**
      * constructor of camera
@@ -126,7 +128,12 @@ public class Camera {
         this.rayTracer = rayTracer;
         return this;
     }
-    
+
+    public Camera setThreadsCount(int threadsCount)
+    {
+        this.threadsCount=threadsCount;
+        return this;
+    }
     /**
      * Constructs a ray from the camera through pixel i,j.
      * @param nX number of pixels on the width of the view plane.
@@ -148,8 +155,9 @@ public class Camera {
         return new Ray(location, pIJ.subtract(location));
     }
 
-    private Color castRay(int j, int i) {
-        return rayTracer.traceRay(constructRay(imageWriter.getNx(), imageWriter.getNy(), j, i));
+    private void castRay(int nX, int nY, int col, int row) {
+        imageWriter.writePixel(col,row,rayTracer.traceRay(constructRay(nX,nY,col,row)));
+        pixelManager.pixelDone();
     }
     
     /**
@@ -159,6 +167,9 @@ public class Camera {
      * @throws MissingResourceException if one of the fields are uninitialized
      */
     public Camera renderImage() {
+        final int nX = imageWriter.getNx();
+        final int nY = imageWriter.getNy();
+        pixelManager = new PixelManager(nY,nX,0);
         if (imageWriter == null)
             throw new MissingResourceException("All of the filed should be initialized",
                     "Camera",
@@ -167,11 +178,14 @@ public class Camera {
             throw new MissingResourceException("All of the filed should be initialized",
                     "Camera",
                     "rayTracer");
-        IntStream.range(0, imageWriter.getNy()).parallel().forEach(i->{
-            IntStream.range(0, imageWriter.getNx()).parallel().forEach(j->{
-                imageWriter.writePixel(j, i, castRay(j, i));
-            });
-        });
+        if (threadsCount == 0)
+            for (int i=0;i<nY;++i)
+                for(int j=0;j<nX;++j)
+                    castRay(nX,nY,j,i);
+        else
+            IntStream.range(0, nY).parallel()
+                .forEach(i-> IntStream.range(0, nX).parallel()
+                    .forEach(j-> castRay(nX,nY,j,i)));
         /*for (int i = 0; i < imageWriter.getNx(); i++) {
             for (int j = 0; j < imageWriter.getNy(); j++) {
                 imageWriter.writePixel(j, i, castRay(j, i));

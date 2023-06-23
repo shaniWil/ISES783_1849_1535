@@ -70,6 +70,7 @@ public class GeneralTest {
 
         camera.setImageWriter(new ImageWriter("Final with adaptive", 2000, 2000)) //
                 .setRayTracer(new RayTracerBasic(scene,true)) //
+                .setThreadsCount(3)//
                 .renderImage() //
                 .writeToImage();
 
@@ -93,6 +94,7 @@ public class GeneralTest {
 
         camera.setImageWriter(new ImageWriter("Final", 2000, 2000)) //
                 .setRayTracer(new RayTracerBasic(scene)) //
+                .setThreadsCount(3)//
                 .renderImage() //
                 .writeToImage();
 
