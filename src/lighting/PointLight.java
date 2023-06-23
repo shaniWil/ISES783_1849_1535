@@ -15,7 +15,7 @@ public class PointLight extends Light implements LightSource {
     double Kq = 0;
 
 
-    protected PointLight(Color intensity, Point positionIn) {
+    public PointLight(Color intensity, Point positionIn) {
         super(intensity);
         position = positionIn;
     }

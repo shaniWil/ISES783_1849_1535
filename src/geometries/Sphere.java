@@ -7,6 +7,7 @@ import primitives.Vector;
 import java.util.List;
 
 import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 
 /** This class represents a geometric body of sphere type
  * @author Raaya Feldmar & Shani Wilamowsky */
@@ -49,13 +50,13 @@ public class Sphere extends RadialGeometry {
         double t1 = tm - th;
         double t2 = tm + th;
 
-        if (t1 > 0 && t2 > 0)
+        if (t1 > 0 && t2 > 0 && !isZero(t1) && !isZero(t2))
             return List.of(new GeoPoint(this,(rayP0.add(rayDir.scale(t1)))),(new GeoPoint(this,(rayP0.add(rayDir.scale(t2))))));
 
-        if (t1 > 0)
+        if (t1 > 0 && !isZero(t1))
             return List.of(new GeoPoint(this,(rayP0.add(rayDir.scale(t1)))));
 
-        if (t2 > 0)
+        if (t2 > 0 && !isZero(t2))
             return List.of(new GeoPoint(this,rayP0.add(rayDir.scale(t2))));
 
         return null;

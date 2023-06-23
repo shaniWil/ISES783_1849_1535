@@ -2,6 +2,9 @@ package primitives;
 
 import java.util.List;
 import java.util.Objects;
+
+import geometries.Geometry;
+import geometries.Intersectable;
 import geometries.Intersectable.GeoPoint;
 
 /** Ray class represents ray in 3D Cartesian coordinate system
@@ -11,6 +14,41 @@ public class Ray {
     private final Point p0;
     private final Vector dir;
 
+    public static class RayColor {
+        public Ray ray;
+        public Color color;
+
+        public RayColor(Ray ray, Color color) {
+            this.ray = ray;
+            this.color = color;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            RayColor rayColor = (RayColor) o;
+
+            if (!Objects.equals(ray, rayColor.ray)) return false;
+            return Objects.equals(color, rayColor.color);
+        }
+
+        @Override
+        public int hashCode() {
+            int result = ray != null ? ray.hashCode() : 0;
+            result = 31 * result + (color != null ? color.hashCode() : 0);
+            return result;
+        }
+
+        @Override
+        public String toString() {
+            return "RayColor{" +
+                    "ray=" + ray +
+                    ", color=" + color +
+                    '}';
+        }
+    }
     /**
      * Constructor to initialize Ray based object with its p0 and direction
      * @param p0 point of reference

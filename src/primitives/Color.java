@@ -102,6 +102,22 @@ public class Color {
         return new Color(rgb.d1 / k.d1, rgb.d2 / k.d2, rgb.d3 / k.d3);
     }
 
+    public Boolean sameColor(Color color)
+    {
+        if((color.rgb.d1 - rgb.d1)*(color.rgb.d1 - rgb.d1) < 1)
+            if ((color.rgb.d2 - rgb.d2)*(color.rgb.d2 - rgb.d2) < 1)
+                if ((color.rgb.d3 - rgb.d3)*(color.rgb.d3 - rgb.d3) < 1)
+                    return true;
+        return false;
+    }
+    public Boolean sameColor(Color color1,Color color2, Color color3)
+    {
+        if(this.sameColor(color1))
+            if (this.sameColor(color2))
+                if (this.sameColor(color3))
+                    return true;
+        return false;
+    }
     @Override
     public String toString() { return "rgb:" + rgb; }
 }

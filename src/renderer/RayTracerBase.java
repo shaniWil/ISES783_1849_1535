@@ -14,13 +14,15 @@ import scene.Scene;
 
 public abstract class RayTracerBase {
     protected Scene scene;
+    protected Boolean onAdaptive;
 
     /**
      * constructor of RayTracerBase
      * @param scene
      */
-    public RayTracerBase(Scene scene) {
+    public RayTracerBase(Scene scene, Boolean onAdaptive) {
         this.scene = scene;
+        this.onAdaptive = onAdaptive;
     }
 
     /**

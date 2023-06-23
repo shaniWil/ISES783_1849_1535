@@ -6,6 +6,7 @@ import primitives.Ray;
 import primitives.Vector;
 
 import java.util.MissingResourceException;
+import java.util.stream.*;
 
 import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
@@ -166,12 +167,17 @@ public class Camera {
             throw new MissingResourceException("All of the filed should be initialized",
                     "Camera",
                     "rayTracer");
-        for (int i = 0; i < imageWriter.getNx(); i++) {
+        IntStream.range(0, imageWriter.getNy()).parallel().forEach(i->{
+            IntStream.range(0, imageWriter.getNx()).parallel().forEach(j->{
+                imageWriter.writePixel(j, i, castRay(j, i));
+            });
+        });
+        /*for (int i = 0; i < imageWriter.getNx(); i++) {
             for (int j = 0; j < imageWriter.getNy(); j++) {
                 imageWriter.writePixel(j, i, castRay(j, i));
             }
 
-        }
+        }*/
         return this;
     }
 
