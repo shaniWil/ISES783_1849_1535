@@ -110,12 +110,13 @@ public class Color {
                     return true;
         return false;
     }
-    public Boolean sameColor(Color color1,Color color2, Color color3)
+    public Boolean sameColor(Color color1,Color color2, Color color3, Color color4)
     {
         if(this.sameColor(color1))
             if (this.sameColor(color2))
                 if (this.sameColor(color3))
-                    return true;
+                    if (this.sameColor(color4))
+                        return true;
         return false;
     }
     @Override

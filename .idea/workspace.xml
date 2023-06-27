@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50e5635c-bddb-4d03-8255-89b5129d3e15" name="Changes" comment="middle of mini p. 2">
-      <change afterPath="$PROJECT_DIR$/src/renderer/PixelManager.java" afterDir="false" />
+    <list default="true" id="50e5635c-bddb-4d03-8255-89b5129d3e15" name="Changes" comment="multiThreads">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Color.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/renderer/GeneralTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/GeneralTest.java" afterDir="false" />
     </list>
@@ -99,7 +98,22 @@
       <recent name="geometries" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GeneralTest.theFinal1">
+  <component name="RunManager" selected="JUnit.GeneralTest">
+    <configuration name="GeneralTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISES783_1849_1535" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="renderer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="MAIN_CLASS_NAME" value="renderer.GeneralTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GeneralTest.theFinal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISES783_1849_1535" />
       <extension name="coverage">
@@ -147,22 +161,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="pictureTest.another2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISES783_1849_1535" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lighting.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="lighting" />
-      <option name="MAIN_CLASS_NAME" value="lighting.pictureTest" />
-      <option name="METHOD_NAME" value="another2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="pictureTest.theFinal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISES783_1849_1535" />
       <extension name="coverage">
@@ -181,11 +179,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GeneralTest.theFinal1" />
+        <item itemvalue="JUnit.GeneralTest" />
         <item itemvalue="JUnit.GeneralTest.theFinal" />
+        <item itemvalue="JUnit.GeneralTest.theFinal1" />
         <item itemvalue="JUnit.pictureTest.theFinal" />
         <item itemvalue="JUnit.pictureTest" />
-        <item itemvalue="JUnit.pictureTest.another2" />
       </list>
     </recent_temporary>
   </component>
@@ -358,7 +356,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1687500337489</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL‎-00023" summary="multiThreads">
+      <created>1687533514518</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL‎-00023" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1687533514518</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,7 +400,8 @@
     <MESSAGE value="stage 7 with build picture." />
     <MESSAGE value="add spin the camera" />
     <MESSAGE value="middle of mini p. 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="middle of mini p. 2" />
+    <MESSAGE value="multiThreads" />
+    <option name="LAST_COMMIT_MESSAGE" value="multiThreads" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

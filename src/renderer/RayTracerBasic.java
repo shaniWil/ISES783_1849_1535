@@ -161,27 +161,29 @@ public class RayTracerBasic extends RayTracerBase {
 
         temp = new Ray(point,vector.add(vectorWidth.scale(spearing)).add(vectorLength.scale(spearing/2+random(-random,random))));
         Ray.RayColor rayColor9 = new Ray.RayColor(temp,calcColorGlobalEffect(temp,level,k,kx));
-        return calcBeamRaysOnAdaptive(rayColor1, rayColor3,rayColor7,rayColor9,vectorLength,vectorWidth,spearing,level,k,kx);
+        return calcBeamRaysOnAdaptive(rayColor1, rayColor3,rayColor7,rayColor9,vectorLength,vectorWidth,spearing,2, level,k,kx);
     }
 
-    private Color calcBeamRaysOnAdaptive (Ray.RayColor rayColor1, Ray.RayColor rayColor3, Ray.RayColor rayColor7, Ray.RayColor rayColor9, Vector vectorLength, Vector vectorWidth, double spearing, int level, Double3 k, Double3 kx)
+    private Color calcBeamRaysOnAdaptive (Ray.RayColor rayColor1, Ray.RayColor rayColor3, Ray.RayColor rayColor7, Ray.RayColor rayColor9,
+                                          Vector vectorLength, Vector vectorWidth, double spearing, int amountRays,
+                                          int level, Double3 k, Double3 kx)
     {
-        if(rayColor1.color.sameColor(rayColor3.color,rayColor7.color, rayColor9.color))
-                return rayColor1.color;
-        if(spearing<0.01)
-            return rayColor1.color.add(rayColor3.color).add(rayColor7.color).add(rayColor9.color).reduce(4);
-        double random = spearing/AMOUNT;
+        double random = spearing/amountRays;
         Point point = rayColor1.ray.getP0();
         Vector vector= rayColor1.ray.getDir();
 
-        Ray temp = new Ray(point,vector.add(vectorWidth.scale(spearing/2+random(-random,random))));
+        Ray temp = new Ray(point,vector.add(vectorWidth.scale(spearing/2+random(-random,random))).add(vectorLength.scale(spearing/2+random(-random,random))));
+        Ray.RayColor rayColor5 = new Ray.RayColor(temp,calcColorGlobalEffect(temp,level,k,kx));
+        if(rayColor1.color.sameColor(rayColor3.color,rayColor7.color, rayColor9.color, rayColor5.color))
+                return rayColor1.color;
+        if(amountRays>4)
+            return rayColor1.color.add(rayColor3.color).add(rayColor7.color).add(rayColor9.color).add(rayColor5.color).reduce(5);
+
+        temp = new Ray(point,vector.add(vectorWidth.scale(spearing/2+random(-random,random))));
         Ray.RayColor rayColor2 = new Ray.RayColor(temp,calcColorGlobalEffect(temp,level,k,kx));
 
         temp = new Ray(point,vector.add(vectorLength.scale(spearing/2+random(-random,random))));
         Ray.RayColor rayColor4 = new Ray.RayColor(temp,calcColorGlobalEffect(temp,level,k,kx));
-
-        temp = new Ray(point,vector.add(vectorWidth.scale(spearing/2+random(-random,random))).add(vectorLength.scale(spearing/2+random(-random,random))));
-        Ray.RayColor rayColor5 = new Ray.RayColor(temp,calcColorGlobalEffect(temp,level,k,kx));
 
         temp = new Ray(point,vector.add(vectorWidth.scale(spearing+random(-random,random))).add(vectorLength.scale(spearing/2+random(-random,random))));
         Ray.RayColor rayColor6 = new Ray.RayColor(temp,calcColorGlobalEffect(temp,level,k,kx));
@@ -189,10 +191,10 @@ public class RayTracerBasic extends RayTracerBase {
         temp = new Ray(point,vector.add(vectorWidth.scale(spearing/2+random(-random,random))).add(vectorLength.scale(spearing+random(-random,random))));
         Ray.RayColor rayColor8 = new Ray.RayColor(temp,calcColorGlobalEffect(temp,level,k,kx));
 
-        Color color = calcBeamRaysOnAdaptive(rayColor1, rayColor2, rayColor4, rayColor5,vectorLength,vectorWidth,spearing/2,level,k,kx);
-        color = color.add(calcBeamRaysOnAdaptive(rayColor2, rayColor3, rayColor5, rayColor6,vectorLength,vectorWidth,spearing/2,level,k,kx));
-        color = color.add(calcBeamRaysOnAdaptive(rayColor4, rayColor5, rayColor7, rayColor8,vectorLength,vectorWidth,spearing/2,level,k,kx));
-        color = color.add(calcBeamRaysOnAdaptive(rayColor5, rayColor6, rayColor8, rayColor9,vectorLength,vectorWidth,spearing/2,level,k,kx));
+        Color color = calcBeamRaysOnAdaptive(rayColor1, rayColor2, rayColor4, rayColor5,vectorLength,vectorWidth,spearing/2,amountRays*2 -1,level,k,kx);
+        color = color.add(calcBeamRaysOnAdaptive(rayColor2, rayColor3, rayColor5, rayColor6,vectorLength,vectorWidth,spearing/2,amountRays*2 -1,level,k,kx));
+        color = color.add(calcBeamRaysOnAdaptive(rayColor4, rayColor5, rayColor7, rayColor8,vectorLength,vectorWidth,spearing/2,amountRays*2 -1,level,k,kx));
+        color = color.add(calcBeamRaysOnAdaptive(rayColor5, rayColor6, rayColor8, rayColor9,vectorLength,vectorWidth,spearing/2,amountRays*2 -1,level,k,kx));
 
         return color.reduce(4);
     }
